@@ -1,0 +1,15 @@
+gitignore/
+node_modules/
+
+project/*/builds/
+project/*/internals.json
+project/*/members.json
+
+public/*
+!public/docs
+
+components/*.js
+!components/index.js
+
+componentEditors/*.js
+!componentEditors/index.js

@@ -1,0 +1,37 @@
+{
+  "name": "sup-fframework-plugin",
+  "version": "0.0.1",
+  "description": "fFramework.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florentpoujol/superpowers-fframework-plugin"
+  },
+  "author": "Florent Poujol <florent.poujol@gmail.com> (http://florentpoujol.fr)",
+  "dependencies": {},
+  "devDependencies": {
+    "typedoc": "0.2.x",
+    "typescript": "1.6.x"
+  },
+  "keywords": [
+    "superpowers",
+    "plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/florentpoujol/superpowers-flang-plugin/issues"
+  },
+  "scripts": {
+    "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
+    "gendoc": "typedoc --out gitignore/docs api/ff.ts --mode file --target ES5 --name \"ff plugin\" --readme tutorial.md --theme minimal",
+    
+    "linksrcdev": "mklink /j \"../../app/plugins/florentpoujol/ff\" \"./\"",
+    "linksrcrelease": "mklink /j \"../../../release/app/plugins/florentpoujol/ff\" \"./\"",
+
+    "linkprojdev": "mklink /j \"../../data/projects/ff\" \"./project/ff\"",
+    "linkprojrelease": "mklink /j \"../../../localprojects/ff\" \"./project/ff\""
+  },
+  "maintainers": [
+    "Florent Poujol <florent.poujol@gmail.com>"
+  ],
+  "homepage": "https://github.com/florentpoujol/superpowers-fframework-plugin",
+  "license": "MIT"
+}
