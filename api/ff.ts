@@ -32,18 +32,6 @@ class MouseInput extends Sup.ActorComponent {
   * Set and updated by the component that is on the actor with the camera component.
   */
   ray: Sup.Math.Ray;
-  
-  /**
-  * The normalized mouse position.
-  * Each property is and between -1 (left/bottom) and 1 (right/up).
-  */
-  mousePosition: { x: number, y: number } = { x: 0, y: 0 };
-
-  /**
-  * The normalized mouse delta since the last frame.
-  * Each property is and between -1 (move toward left/bottom) and 1 (move toward right/up).
-  */
-  mouseDelta: { x: number, y: number } = { x: 0, y: 0 };
 
   /**
   * The event emitter through which the mouse events are handled.
@@ -59,6 +47,9 @@ class MouseInput extends Sup.ActorComponent {
   constructor(actor: Sup.Actor) {
     super(actor);
     this.actor.mouseInput = this;
+    this.__inner = new SupEngine.componentClasses.MouseInput(this.actor.__inner);
+    this.__inner.__outer = this;
+
     // this.emitter = (<any>window).EventEmitter();
     if (actor.camera != null)
       this.ray = new Sup.Math.Ray();
@@ -92,15 +83,12 @@ class MouseInput extends Sup.ActorComponent {
   // ----------------------------------------
 
   update() {
-    if (this.actor.camera != null) {
-      this.mousePosition = Sup.Input.getMousePosition();
-      this.mouseDelta = Sup.Input.getMouseDelta();
-      this.ray.setFromCamera(this.actor.camera, this.mousePosition);
-    }
-    
+    if (this.actor.camera != null)
+      this.ray.setFromCamera(this.actor.camera, Sup.Input.getMousePosition());
+        
     else if (this.ray != null) {  
       let hit = this.ray.intersectActor(this.actor)[0];
-      
+
       if (hit != null) {
         if(this.isMouseOver === false) {
           this.isMouseOver = true;
@@ -113,7 +101,8 @@ class MouseInput extends Sup.ActorComponent {
       }
 
       if (this.isMouseOver === true) {
-        if (this.mouseDelta.x !== 0 || this.mouseDelta.y !== 0)
+        let mouseDelta = Sup.Input.getMouseDelta();
+        if (mouseDelta.x !== 0 || mouseDelta.y !== 0)
           this.emitter.emit("onmousemove");
 
         if (Sup.Input.wasMouseButtonJustReleased(0))
@@ -126,9 +115,11 @@ class MouseInput extends Sup.ActorComponent {
   }
 
   destroy() {
-    this.isMouseOver = false;
+    this.__inner._destroy();
+    this.__inner = null;
     this.emitter.removeAllListeners();
     this.emitter = null;
+    this.isMouseOver = false;
     this.camera = null;
     this.ray = null;
     this.actor.mouseInput = null;

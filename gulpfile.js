@@ -37,11 +37,13 @@ function makeBrowserify(sourcePath, destPath, outputName, standalone, taskName) 
 
 makeBrowserify("./api/", "./public", "api");
 makeBrowserify("./components/", "./public", "components");
+makeBrowserify("./componentEditors/", "./public", "componentEditors");
 
 // Watch
 gulp.task("watch", function() {
   gulp.watch(["./api/*.js", "./api/*.ts"], ["api-browserify"]);
   gulp.watch(["./components/*.js"], ["components-browserify"]);
+  gulp.watch(["./componentEditors/*.js"], ["componentEditors-browserify"]);
 
   gulp.watch(["./**/*.ts", "!./api/*.ts"], ["typescript"]);
 });

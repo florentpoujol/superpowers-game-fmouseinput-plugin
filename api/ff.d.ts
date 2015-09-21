@@ -6,11 +6,8 @@ declare class EventEmitterComponent extends Sup.ActorComponent {
 
 
 declare class MouseInput extends Sup.ActorComponent {
-
   isMouseOver: boolean; 
   ray: Sup.Math.Ray;
-  mousePosition: { x: number, y: number };
-  mouseDelta: { x: number, y: number };
   emitter: EventEmitter;
 
   constructor(actor: Sup.Actor);
