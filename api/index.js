@@ -5,6 +5,6 @@ SupAPI.registerPlugin("typescript", "fFramework", {
   defs: fs.readFileSync(__dirname + "/ff.d.ts", { encoding: "utf8" }),
   exposeActorComponent: { propertyName: "event", className: "EventEmitterComponent" }
 });
-SupAPI.registerPlugin("typescript", "fFramework", {
+SupAPI.registerPlugin("typescript", "fFramework2", {
   exposeActorComponent: { propertyName: "mouseInput", className: "MouseInput" }
 });
