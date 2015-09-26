@@ -1,10 +1,14 @@
 var fs = require("fs");
 
+var main = fs.readFileSync(__dirname + "/main.ts", { encoding: "utf8" });
+var lang = fs.readFileSync(__dirname + "/lang.ts", { encoding: "utf8" });
+
 SupAPI.registerPlugin("typescript", "fFramework", {
-  code: fs.readFileSync(__dirname + "/ff.ts", { encoding: "utf8" }).replace("reference path", "_reference path"),
-  defs: fs.readFileSync(__dirname + "/ff.d.ts", { encoding: "utf8" }),
-  exposeActorComponent: { propertyName: "event", className: "EventEmitterComponent" }
+  code: (main + lang).replace("reference path", "_reference path"),
+  defs: fs.readFileSync(__dirname + "/main.d.ts", { encoding: "utf8" }),
+  exposeActorComponent: { propertyName: "event", className: "f.EventEmitterComponent" }
 });
-SupAPI.registerPlugin("typescript", "fFramework2", {
-  exposeActorComponent: { propertyName: "mouseInput", className: "MouseInput" }
+
+SupAPI.registerPlugin("typescript", "MouseInput component accessor", {
+  exposeActorComponent: { propertyName: "mouseInput", className: "f.MouseInput" }
 });
