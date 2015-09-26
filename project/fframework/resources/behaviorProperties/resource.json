@@ -14,6 +14,11 @@
       "scriptId": "0",
       "parentBehavior": null,
       "properties": []
+    },
+    "fGuiBehavior": {
+      "scriptId": "13",
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }

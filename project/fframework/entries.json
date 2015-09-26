@@ -1,23 +1,18 @@
 [
   {
-    "id": "4",
-    "name": "Lang",
+    "id": "9",
+    "name": "Main",
     "type": null,
     "children": [
       {
-        "id": "5",
-        "name": "en.cson",
-        "type": "fText"
-      },
-      {
-        "id": "6",
-        "name": "fr.json",
-        "type": "fText"
-      },
-      {
-        "id": "7",
-        "name": "Lang",
+        "id": "10",
+        "name": "Main",
         "type": "script"
+      },
+      {
+        "id": "11",
+        "name": "MainScene",
+        "type": "scene"
       }
     ]
   },
@@ -44,19 +39,41 @@
     ]
   },
   {
-    "id": "9",
-    "name": "Main",
+    "id": "4",
+    "name": "Lang",
     "type": null,
     "children": [
       {
-        "id": "10",
-        "name": "Main",
+        "id": "5",
+        "name": "en.cson",
+        "type": "fText"
+      },
+      {
+        "id": "6",
+        "name": "fr.json",
+        "type": "fText"
+      },
+      {
+        "id": "7",
+        "name": "Lang",
+        "type": "script"
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Gui",
+    "type": null,
+    "children": [
+      {
+        "id": "13",
+        "name": "Gui",
         "type": "script"
       },
       {
-        "id": "11",
-        "name": "MainScene",
-        "type": "scene"
+        "id": "14",
+        "name": "My wall of text",
+        "type": "fText"
       }
     ]
   }

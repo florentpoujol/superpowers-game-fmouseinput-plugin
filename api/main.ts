@@ -1,8 +1,6 @@
 
 module f {
 
-  
-
   /**
   * This ocmponent is to be added on the
   **/
@@ -128,7 +126,7 @@ module f {
       super.destroy();
     }
   }
-  
+
 }
 
 (<any>window).f = f;

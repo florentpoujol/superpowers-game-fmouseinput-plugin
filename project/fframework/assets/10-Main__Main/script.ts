@@ -30,6 +30,11 @@ class MainBehavior extends Sup.Behavior {
       root = new Sup.Actor("Root");
       root.setPosition(0,0,0);
       
+//       let container = document.getElementById("fGui-main-container");
+      let container = f.Gui.mainDomContainer;
+      if (container != null)
+        container.innerHTML = "";
+      
 //       let children = root.getChildren();
 //       for (let child of children)
 //         child.destroy();
@@ -38,13 +43,16 @@ class MainBehavior extends Sup.Behavior {
     let menu = {
       "Lang": function() {
         cleanScene();
-//         Sup.appendScene("Lang/Scene", root);
         root.addBehavior(fLangBehavior);
       },
       
       "Mouseinput": function() {
         cleanScene();
         Sup.appendScene("MouseInput/Scene", root);
+      },
+      "Gui": function() {
+        cleanScene();
+        root.addBehavior(fGuiBehavior);
       }
     };
     
