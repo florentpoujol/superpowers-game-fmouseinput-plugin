@@ -1,0 +1,53 @@
+@import 'nib'
+
+body
+  display flex
+  
+nav
+  width 250px
+  overflow-y auto
+  position fixed
+  top 0
+  background #ddd
+  bottom 0
+
+  h1
+    margin-left 10px
+  
+  ul
+    list-style none
+    margin 0
+    padding 0.5em
+  
+  li
+    padding 0
+    padding-top 10px
+    margin 0
+    margin-bottom 5px
+    border-top 1px solid rgb(190,190,190)
+  
+  li:first-child
+    border 0
+  
+  li li
+    padding-top 5px
+    margin 0
+    border 0
+
+  li li a
+    display block
+    color #444
+    padding 0.25em 0.5em
+    text-decoration none
+
+    &:hover
+      background #ccc
+
+    &.active
+      background #444
+      color #eee
+
+iframe
+  margin-left 250px
+  border 0
+  flex 1
