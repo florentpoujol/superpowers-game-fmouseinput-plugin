@@ -12,6 +12,15 @@ SupAPI.registerPlugin("typescript", "f.Gui", {
   code: fs.readFileSync(__dirname + "/gui.ts", { encoding: "utf8" })
 });
 
+// SupAPI.registerPlugin("typescript", "FTWEEN", {
+//   code: "declare var FTWEEN;",
+//   defs: fs.readFileSync(__dirname + "/../lib/ftween.d.ts", { encoding: "utf8" })
+// });
+
+SupAPI.registerPlugin("typescript", "f.Tween", {
+  code: fs.readFileSync(__dirname + "/tween.ts", { encoding: "utf8" }).replace("<reference path=", "<_reference path="),
+});
+
 SupAPI.registerPlugin("typescript", "EventEmitter component accessor", {
   exposeActorComponent: { propertyName: "event", className: "f.EventEmitterComponent" }
 });
