@@ -1,0 +1,19 @@
+{
+  "behaviors": {
+    "MainBehavior": {
+      "scriptId": "10",
+      "parentBehavior": null,
+      "properties": []
+    },
+    "fLangBehavior": {
+      "scriptId": "7",
+      "parentBehavior": null,
+      "properties": []
+    },
+    "MouseInputBehavior": {
+      "scriptId": "0",
+      "parentBehavior": null,
+      "properties": []
+    }
+  }
+}

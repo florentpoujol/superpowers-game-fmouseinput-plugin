@@ -1,0 +1,63 @@
+[
+  {
+    "id": "4",
+    "name": "Lang",
+    "type": null,
+    "children": [
+      {
+        "id": "5",
+        "name": "en.cson",
+        "type": "fText"
+      },
+      {
+        "id": "6",
+        "name": "fr.json",
+        "type": "fText"
+      },
+      {
+        "id": "7",
+        "name": "Lang",
+        "type": "script"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "MouseInput",
+    "type": null,
+    "children": [
+      {
+        "id": "0",
+        "name": "MouseInput",
+        "type": "script"
+      },
+      {
+        "id": "2",
+        "name": "Sprite",
+        "type": "sprite"
+      },
+      {
+        "id": "1",
+        "name": "Scene",
+        "type": "scene"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Main",
+    "type": null,
+    "children": [
+      {
+        "id": "10",
+        "name": "Main",
+        "type": "script"
+      },
+      {
+        "id": "11",
+        "name": "MainScene",
+        "type": "scene"
+      }
+    ]
+  }
+]
