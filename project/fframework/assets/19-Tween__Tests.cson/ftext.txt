@@ -1,0 +1,87 @@
+[
+  {
+  name: "move"
+  params:
+    to:
+      position:
+        x: 10
+    duration: 2
+  }
+
+  {
+  name: "move+rotate"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.28
+    duration: 2
+  }
+
+  {
+  name: "move+rotate repeat2"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.25
+    duration: 2
+    repeat: 2
+    onLoopComplete: true
+  }
+
+  {
+  name: "move+rotate loops2 bounceIn"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.25
+    duration: 2
+    loops: 3
+    onLoopComplete: true
+    easingName: "bounceIn"
+  }
+
+  {
+  name: "rel move+rotate"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.28
+    duration: 2
+    isRelative: true
+  }
+
+  {
+  name: "move+rotate yoyo"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.25
+    duration: 2
+    repeat: 1
+    yoyo: true
+  }
+
+  {
+  name: "rel move+rotate yoyo"
+  params:
+    to:
+      position:
+        x: 10
+      eulerAngles:
+        z: 6.28
+    duration: 2
+    repeat:1
+    yoyo: true
+    isRelative: true
+  }
+]

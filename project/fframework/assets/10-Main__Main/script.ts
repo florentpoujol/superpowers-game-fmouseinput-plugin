@@ -24,21 +24,25 @@ class MainBehavior extends Sup.Behavior {
     
     
     let root = Sup.getActor("Root");
+    let currentBehavior: any;
     
     let cleanScene = function() {
       root.destroy();
       root = new Sup.Actor("Root");
       root.setPosition(0,0,0);
       
-//       let container = document.getElementById("fGui-main-container");
+      if (currentBehavior != null) {
+        currentBehavior.onCleanScene();
+        currentBehavior = null;
+      }
+      
+      divConsole.elt.innerHTML = "";
+      
       let container = f.Gui.mainDomContainer;
       if (container != null)
         container.innerHTML = "";
-      
-//       let children = root.getChildren();
-//       for (let child of children)
-//         child.destroy();
     }
+    
     
     let menu = {
       "Lang": function() {
@@ -53,6 +57,11 @@ class MainBehavior extends Sup.Behavior {
       "Gui": function() {
         cleanScene();
         root.addBehavior(fGuiBehavior);
+      },
+      "Tween": function() {
+        cleanScene();
+        Sup.appendScene("Tween/Scene", root);
+        currentBehavior = root.getChild("Leonard").getBehavior(TweenBehavior);
       }
     };
     
@@ -60,10 +69,6 @@ class MainBehavior extends Sup.Behavior {
     let gui = new dat.GUI();
     for (let key in menu)
       gui.add(menu, key);
-  }
-
-  update() {
-    
   }
 }
 Sup.registerBehavior(MainBehavior);

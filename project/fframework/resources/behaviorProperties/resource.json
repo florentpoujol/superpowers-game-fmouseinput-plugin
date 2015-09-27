@@ -19,6 +19,11 @@
       "scriptId": "13",
       "parentBehavior": null,
       "properties": []
+    },
+    "TweenBehavior": {
+      "scriptId": "20",
+      "parentBehavior": null,
+      "properties": []
     }
   }
 }

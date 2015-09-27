@@ -76,5 +76,32 @@
         "type": "fText"
       }
     ]
+  },
+  {
+    "id": "16",
+    "name": "Tween",
+    "type": null,
+    "children": [
+      {
+        "id": "17",
+        "name": "Leonard",
+        "type": "sprite"
+      },
+      {
+        "id": "18",
+        "name": "Scene",
+        "type": "scene"
+      },
+      {
+        "id": "19",
+        "name": "Tests.cson",
+        "type": "fText"
+      },
+      {
+        "id": "20",
+        "name": "Tween",
+        "type": "script"
+      }
+    ]
   }
 ]
