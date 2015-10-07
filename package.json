@@ -1,10 +1,10 @@
 {
-  "name": "sup-fframework-plugin",
+  "name": "sup-flib-plugin",
   "version": "0.0.1",
-  "description": "fFramework.",
+  "description": "fLib.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/florentpoujol/superpowers-fframework-plugin"
+    "url": "https://github.com/florentpoujol/superpowers-flib-plugin"
   },
   "author": "Florent Poujol <florent.poujol@gmail.com> (http://florentpoujol.fr)",
   "dependencies": {},
@@ -23,15 +23,15 @@
     "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
     "gendoc": "typedoc --out gitignore/docs api/ff.ts --mode file --target ES5 --name \"ff plugin\" --readme tutorial.md --theme minimal",
     
-    "linksrcdev": "mklink /j \"../../app/plugins/florentpoujol/fframework\" \"./\"",
-    "linksrcrelease": "mklink /j \"../../../release/app/plugins/florentpoujol/fframework\" \"./\"",
+    "linksrcdev": "mklink /j \"../../app/plugins/florentpoujol/flib\" \"./\"",
+    "linksrcrelease": "mklink /j \"../../../release/app/plugins/florentpoujol/flib\" \"./\"",
 
-    "linkprojdev": "mklink /j \"../../data/projects/fframework\" \"./project/fframework\"",
-    "linkprojrelease": "mklink /j \"../../../localprojects/fframework\" \"./project/fframework\""
+    "linkprojdev": "mklink /j \"../../data/projects/flib\" \"./project/flib\"",
+    "linkprojrelease": "mklink /j \"../../../localprojects/flib\" \"./project/flib\""
   },
   "maintainers": [
     "Florent Poujol <florent.poujol@gmail.com>"
   ],
-  "homepage": "https://github.com/florentpoujol/superpowers-fframework-plugin",
+  "homepage": "https://github.com/florentpoujol/superpowers-flib-plugin",
   "license": "MIT"
 }

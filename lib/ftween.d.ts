@@ -1,8 +1,8 @@
 // Type definitions for ftween.js
 // https://github.com/florentpoujol/ftween.js
 
-// Exposed in Superpowers by the fTween plugin
-// https://github.com/florentpoujol/superpowers-ftween-plugin
+// Exposed in Superpowers by the fLib plugin
+// https://github.com/florentpoujol/superpowers-flib-plugin
 
 // Origial definitions for Soledad Penadés's tween.js by: sunetos <https://github.com/sunetos>, jzarnikov <https://github.com/jzarnikov>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped

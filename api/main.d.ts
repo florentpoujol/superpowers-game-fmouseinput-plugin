@@ -1,8 +1,8 @@
-// fFramework plugin
-// https://github.com/florentpoujol/superpowers-fframework-plugin
+// fLib plugin
+// https://github.com/florentpoujol/superpowers-flib-plugin
 
 // Documentation:
-// http://florentpoujol.github.io/superpowers-fframework-plugin
+// http://florentpoujol.github.io/superpowers-flib-plugin
 
 // You can also access the documentation offline in the plugin's "public/docs" folder 
 // or via the "Docs browser" tool provided by the "Docs browser" plugin: https://github.com/florentpoujol/superpowers-docs-browser-plugin

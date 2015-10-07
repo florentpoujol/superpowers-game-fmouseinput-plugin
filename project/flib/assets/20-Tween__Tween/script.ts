@@ -10,7 +10,7 @@ class TweenBehavior extends Sup.Behavior {
 
     var tests = Sup.get("Tween/Tests.cson", fText).parse();
     this.gui = new dat.GUI();
-    var menu: any = {};
+    var menu: any = {};   
 
     var onStart = function() {
       console.log("onStart", this);
