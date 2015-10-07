@@ -1,7 +1,8 @@
 
+
 function fGuiTest() {
   let container = new f.Gui.Container(true, { className: "thecontainer" });
-  
+    
   let text = new f.Gui.Text("my text", { className: "mytext" });
   text.value = "150";
   text.label = "{{value}} : the text.";

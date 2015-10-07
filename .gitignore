@@ -1,5 +1,6 @@
 gitignore/
-node_modules/
+node_modules/*
+!node_modules/operational-transform
 
 project/*/builds/
 project/*/internals.json
@@ -7,9 +8,26 @@ project/*/members.json
 
 public/*
 !public/docs
+public/editors/ftext
+!public/editors/ftext/icon.svg
+!public/editors/ftext/codemirror-themes
+!public/editors/ftext/locale
 
 components/*.js
 !components/index.js
 
 componentEditors/*.js
 !componentEditors/index.js
+
+data/*.js
+!data/index.js
+
+editors/**/*.js
+
+runtime/*.js
+!runtime/index.js
+
+settingsEditors/*.js
+!settingsEditors/index.js
+
+textEditorWidget/*.js

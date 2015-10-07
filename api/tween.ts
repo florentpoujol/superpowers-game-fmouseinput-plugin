@@ -675,3 +675,5 @@ module f.Tween {
     start?: number;
   }
 } // end of f.Tween module
+
+(<any>window).fTween = f.Tween; // retrocompaltibility with old fTween plugin/module

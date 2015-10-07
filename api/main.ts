@@ -129,4 +129,3 @@ module f {
 
 }
 
-(<any>window).f = f;

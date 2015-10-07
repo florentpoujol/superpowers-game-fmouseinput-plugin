@@ -21,6 +21,12 @@ SupAPI.registerPlugin("typescript", "f.Tween", {
   code: fs.readFileSync(__dirname + "/tween.ts", { encoding: "utf8" })
 });
 
+SupAPI.registerPlugin("typescript", "f.Text", {
+  code: fs.readFileSync(__dirname+"/fText.ts", { encoding: "utf8" }).replace("<reference path=", ""),
+});
+
+
+
 SupAPI.registerPlugin("typescript", "EventEmitter component accessor", {
   exposeActorComponent: { propertyName: "event", className: "f.EventEmitterComponent" }
 });
