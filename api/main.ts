@@ -1,3 +1,4 @@
+/// <reference path="Sup.d.ts"/>
 
 module f {
 
@@ -21,6 +22,11 @@ module f {
     * The event emitter through which the mouse events are handled.
     */
     emitter: any = new (<any>window).EventEmitter(); // require Sparklinlab's EventEmitter plugin
+
+    /**
+    * Set by the Engine class' isLayerActive() method
+    */
+    isActive: boolean = true;
 
     // ----------------------------------------
 
@@ -67,6 +73,9 @@ module f {
     // ----------------------------------------
 
     update() {
+      if (this.isActive === false)
+        return;
+
       if (this.actor.camera != null)
         this.ray.setFromCamera(this.actor.camera, Sup.Input.getMousePosition());
           
@@ -111,21 +120,6 @@ module f {
     }
   }
 
-
-
-  export class EventEmitterComponent extends Sup.ActorComponent {
-    emitter = new (<any>window).EventEmitter(); // require Sparklinlab's EventEmitter plugin
-
-    constructor(actor: Sup.Actor) {
-      super(actor);
-    }
-
-    destroy() {
-      this.emitter.removeAllListeners();
-      this.emitter = null;
-      super.destroy();
-    }
-  }
-
 }
 
+(<any>window).f = f;

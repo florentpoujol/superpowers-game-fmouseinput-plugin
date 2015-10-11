@@ -6,7 +6,6 @@
   },
   "files": [
     "index.d.ts",
-    "components/EventEmitterComponent.ts", 
     "components/MouseInput.ts", 
     "componentEditors/MouseInputEditor.ts", 
     "data/fTextAsset.ts", 

@@ -19,7 +19,7 @@ import * as jsyaml from "js-yaml";
 
 export function createOuterAsset(player: SupRuntime.Player, asset: any) {
   // asset is the pub, the asset's properties
-  return new (<any>window).f.Text(asset);
+  return new (<any>window).fText(asset);
 }
 
 export function init(player: any, callback: Function) {

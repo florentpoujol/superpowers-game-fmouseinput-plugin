@@ -11,6 +11,10 @@ export default class MouseInput extends SupEngine.ActorComponent {
       this.__outer.update();
   }
 
+  setIsLayerActive(active: boolean) {
+    this.__outer.isActive = active;
+  }
+
   _destroy() {
     this.__outer = null;
     super._destroy();
