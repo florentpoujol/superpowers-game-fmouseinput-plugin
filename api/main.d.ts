@@ -8,7 +8,9 @@
 // or via the "Docs browser" tool provided by the "Docs browser" plugin: https://github.com/florentpoujol/superpowers-docs-browser-plugin
 
 
+
 declare module f {
+
   module Lang {
     interface Config {
       locales: string[];
@@ -218,12 +220,12 @@ declare module f {
   class MouseInput extends Sup.ActorComponent {
     isMouseOver: boolean; 
     ray: Sup.Math.Ray;
-    emitter: EventEmitter;
+    isLayerActive: boolean;
 
     constructor(actor: Sup.Actor);
 
     camera: Sup.Camera;
-    setCameraActor(actor: Sup.Actor|string): void;
+    cameraActor: Sup.Actor|string;
 
     update(): void;
     destroy(): void;

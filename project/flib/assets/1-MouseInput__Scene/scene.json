@@ -6,14 +6,6 @@
       "children": [],
       "components": [
         {
-          "type": "Behavior",
-          "config": {
-            "behaviorName": "MouseInputBehavior",
-            "propertyValues": {}
-          },
-          "id": "0"
-        },
-        {
           "type": "SpriteRenderer",
           "config": {
             "spriteAssetId": "2",
@@ -29,6 +21,21 @@
             "shaderAssetId": null
           },
           "id": "1"
+        },
+        {
+          "type": "MouseInput",
+          "config": {
+            "cameraActorName": "Camera"
+          },
+          "id": "4"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "MouseInputBehavior",
+            "propertyValues": {}
+          },
+          "id": "5"
         }
       ],
       "position": {

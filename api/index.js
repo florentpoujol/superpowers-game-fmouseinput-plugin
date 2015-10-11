@@ -26,9 +26,13 @@ SupAPI.registerPlugin("typescript", "fText", {
   code: fs.readFileSync(__dirname+"/fText.ts", { encoding: "utf8" }).replace("<reference path=", ""),
 });
 
+// --------------------------------------------------------------------------------
+// accessors on actors
 
+SupAPI.registerPlugin("typescript", "EventEmitter accessor", {
+  exposeActorComponent: { propertyName: "eventEmitter", className: "any" }
+});
 
-
-SupAPI.registerPlugin("typescript", "MouseInput component accessor", {
+SupAPI.registerPlugin("typescript", "MouseInput", {
   exposeActorComponent: { propertyName: "mouseInput", className: "f.MouseInput" }
 });

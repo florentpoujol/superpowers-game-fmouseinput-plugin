@@ -10,6 +10,7 @@
     "componentEditors/MouseInputEditor.ts", 
     "data/fTextAsset.ts", 
     "data/fTextSettingsResource.ts",
+    "data/MouseInputConfig.ts",
     "textEditorWidget/index.ts",
     "editors/fText/info.ts",
     "editors/fText/ui.ts",
