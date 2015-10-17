@@ -1,3 +1,6 @@
+/// <reference path="../index.d.ts" />
+/// <reference path="Sup.d.ts" />
+/// <reference path="../lib/ftween.d.ts" />
 // fLib plugin
 // https://github.com/florentpoujol/superpowers-flib-plugin
 
@@ -6,7 +9,6 @@
 
 // You can also access the documentation offline in the plugin's "public/docs" folder 
 // or via the "Docs browser" tool provided by the "Docs browser" plugin: https://github.com/florentpoujol/superpowers-docs-browser-plugin
-
 
 
 declare module f {

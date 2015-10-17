@@ -1,4 +1,5 @@
 /// <reference path="Sup.d.ts"/>
+/// <reference path="../index.d.ts"/>
 
 module f {
 
@@ -23,6 +24,8 @@ module f {
     * Set by the Engine class' isLayerActive() method
     */
     isLayerActive: boolean = true;
+
+    private __inner: any; // MouseInput extends SupEngine.ActorComponent
 
     // ----------------------------------------
 

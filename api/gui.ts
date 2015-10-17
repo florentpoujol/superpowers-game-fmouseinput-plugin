@@ -1,4 +1,4 @@
-/// <_reference path="../gitignore/EventEmitter.d.ts" />
+
 
 module f.Gui {
   /**

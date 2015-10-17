@@ -1,8 +1,8 @@
 var fs = require("fs");
 
 SupAPI.registerPlugin("typescript", "fLib", {
-  code: fs.readFileSync(__dirname + "/main.ts", { encoding: "utf8" }).replace("<reference path=", ""),
-  defs: fs.readFileSync(__dirname + "/main.d.ts", { encoding: "utf8" })
+  code: fs.readFileSync(__dirname + "/main.ts", { encoding: "utf8" }).replace(/reference path/gi, ""),
+  defs: fs.readFileSync(__dirname + "/main.d.ts", { encoding: "utf8" }).replace(new RegExp("/// <reference path=.+/>\n", "gi"), "")
 });
 
 SupAPI.registerPlugin("typescript", "f.Lang", {
@@ -23,7 +23,7 @@ SupAPI.registerPlugin("typescript", "f.Tween", {
 });
 
 SupAPI.registerPlugin("typescript", "fText", {
-  code: fs.readFileSync(__dirname+"/fText.ts", { encoding: "utf8" }).replace("<reference path=", ""),
+  code: fs.readFileSync(__dirname+"/fText.ts", { encoding: "utf8" }).replace("reference path", ""),
 });
 
 // --------------------------------------------------------------------------------

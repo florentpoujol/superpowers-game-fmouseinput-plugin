@@ -33,6 +33,8 @@ class fText extends Sup.Asset {
   */
   syntax: string = "";
 
+  private __inner: any;
+
   // ----------------------------------------
 
   // called from runtime createdOuterAsset(), or by hand

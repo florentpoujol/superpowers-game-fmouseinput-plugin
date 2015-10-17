@@ -46,7 +46,7 @@
   },
   "scripts": {
     "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
-    "gendoc": "typedoc --out gitignore/docs api/ff.ts --mode file --target ES5 --name \"ff plugin\" --readme tutorial.md --theme minimal",
+    "gendoc": "typedoc --out gitignore/docs api/main.d.ts --mode file --module commonjs --target ES5 --name \"fLib plugin\" --includeDeclarations --excludeExternals --theme minimal",
     
     "linksrcdev": "mklink /j \"../../app/plugins/florentpoujol/flib\" \"./\"",
     "linksrcrelease": "mklink /j \"../../../release/app/plugins/florentpoujol/flib\" \"./\"",
