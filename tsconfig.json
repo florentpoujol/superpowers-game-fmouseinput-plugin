@@ -6,17 +6,8 @@
   },
   "files": [
     "index.d.ts",
+    "componentEditors/MouseInputEditor.ts",
     "components/MouseInput.ts", 
-    "componentEditors/MouseInputEditor.ts", 
-    "data/fTextAsset.ts", 
-    "data/fTextSettingsResource.ts",
-    "data/MouseInputConfig.ts",
-    "textEditorWidget/index.ts",
-    "editors/fText/info.ts",
-    "editors/fText/ui.ts",
-    "editors/fText/network.ts",
-    "editors/fText/index.ts",
-    "settingsEditors/fTextSettingsEditor.ts",
-    "runtime/fText.ts"
+    "data/MouseInputConfig.ts"
   ]
 }

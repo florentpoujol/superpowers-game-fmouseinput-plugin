@@ -1,11 +1,8 @@
-/// <reference path="Sup.d.ts"/>
-/// <reference path="../index.d.ts"/>
+/// <reference path="../index.d.ts" />
+/// <reference path="Sup.d.ts" />
 
 module f {
 
-  /**
-  * This ocmponent is to be added on the
-  **/
   export class MouseInput extends Sup.ActorComponent {
 
     /**
@@ -21,11 +18,15 @@ module f {
     ray: Sup.Math.Ray;
 
     /**
-    * Set by the Engine class' isLayerActive() method
+    * Tell whether the component is active.
+    * Usually set by the engine instance's isLayerActive() method
     */
     isLayerActive: boolean = true;
 
-    private __inner: any; // MouseInput extends SupEngine.ActorComponent
+    /**
+    * Component instance on the engine side (of type "MouseInput extends SupEngine.ActorComponent").
+    */
+    private __inner: any;
 
     // ----------------------------------------
 
@@ -35,11 +36,11 @@ module f {
     constructor(actor: Sup.Actor) {
       super(actor);
       this.actor.mouseInput = this;
-      this.__inner = new SupEngine.componentClasses.MouseInput(this.actor.__inner);
+      this.__inner = new (<any>SupEngine.componentClasses).MouseInput((<any>this.actor).__inner);
       this.__inner.setOuter(this);
 
       if (actor.eventEmitter == null)
-        actor.eventEmitter = new (<any>window).EventEmitter();
+        actor.eventEmitter = new (<any>window).EventEmitter(); // provided by Sparkminlab's EventEmitter plugin
       
       if (actor.camera != null) {
         this._camera = actor.camera;
@@ -88,12 +89,12 @@ module f {
 
     update() {
       if (this.isLayerActive === false)
-        return;
+        return; // shouldn't be necessary since update() isn't called by the engine instance when the layer isn't active
 
-      if (this.actor.camera != null) // component on the same actor as the camera
+      if (this.actor.camera != null) // this component on the same actor as the camera
         this.ray.setFromCamera(this._camera, Sup.Input.getMousePosition());
           
-      else if (this.ray != null) { // component on actors to be checked
+      else if (this.ray != null) { // this component is on an actor to be checked
         let hit = this.ray.intersectActor(this.actor)[0];
 
         if (hit != null) {
@@ -126,13 +127,13 @@ module f {
     }
 
     destroy() {
-      this.__inner._destroy();
-      this.__inner = null;
-      this.isMouseOver = false;
       this.isLayerActive = false;
+      this.isMouseOver = false;
       this.camera = null;
       this.ray = null;
       this.actor.mouseInput = null;
+      this.__inner._destroy();
+      this.__inner = null;
       super.destroy();
     }
   }

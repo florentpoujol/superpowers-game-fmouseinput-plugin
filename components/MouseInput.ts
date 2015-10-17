@@ -27,14 +27,14 @@ export default class MouseInput extends SupEngine.ActorComponent {
   }
   
   update() {
-    if (this.outer != null)
+    if (this.outer != null && this.isLayerActive === true)
       this.outer.update();
   }
 
   setIsLayerActive(active: boolean) {
     this.isLayerActive = active;
     if (this.outer != null)
-      this.outer.isLayerActive = active;
+      this.outer.isActive = active;
   }
 
   _destroy() {

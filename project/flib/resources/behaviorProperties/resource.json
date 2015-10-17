@@ -5,23 +5,8 @@
       "parentBehavior": null,
       "properties": []
     },
-    "fLangBehavior": {
-      "scriptId": "7",
-      "parentBehavior": null,
-      "properties": []
-    },
     "MouseInputBehavior": {
       "scriptId": "0",
-      "parentBehavior": null,
-      "properties": []
-    },
-    "fGuiBehavior": {
-      "scriptId": "13",
-      "parentBehavior": null,
-      "properties": []
-    },
-    "TweenBehavior": {
-      "scriptId": "20",
       "parentBehavior": null,
       "properties": []
     }

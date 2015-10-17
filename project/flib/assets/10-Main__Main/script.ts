@@ -38,31 +38,17 @@ class MainBehavior extends Sup.Behavior {
       
       divConsole.elt.innerHTML = "";
       
-      let container = f.Gui.mainDomContainer;
+      let container = fGui.mainDomContainer;
       if (container != null)
         container.innerHTML = "";
     }
     
     
     let menu = {
-      "Lang": function() {
-        cleanScene();
-        root.addBehavior(fLangBehavior);
-      },
-      
       "Mouseinput": function() {
         cleanScene();
         Sup.appendScene("MouseInput/Scene", root);
       },
-      "Gui": function() {
-        cleanScene();
-        root.addBehavior(fGuiBehavior);
-      },
-      "Tween": function() {
-        cleanScene();
-        Sup.appendScene("Tween/Scene", root);
-        currentBehavior = root.getChild("Leonard").getBehavior(TweenBehavior);
-      }
     };
     
     

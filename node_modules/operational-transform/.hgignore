@@ -1,5 +1,0 @@
-syntax: glob
-node_modules/*
-*.sublime-*
-src/**/*.js
-lib/

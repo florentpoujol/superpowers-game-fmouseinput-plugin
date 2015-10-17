@@ -1,20 +1,5 @@
 var gulp = require("gulp");
-var tasks = [ "jade", "stylus" ];
-
-// Jade
-var jade = require("gulp-jade");
-gulp.task("jade", function() {
-  gulp.src("./editors/**/index.jade").pipe(jade()).pipe(gulp.dest("./public/editors"));
-});
-
-// Stylus
-var stylus = require("gulp-stylus");
-var nib = require("nib");
-var cssimport = require("gulp-cssimport");
-gulp.task("stylus", function() {
-  gulp.src("./editors/**/index.styl").pipe(stylus({use: [ nib() ], errors: true})).pipe(cssimport()).pipe(gulp.dest("./public/editors"));
-  gulp.src("./textEditorWidget/index.styl").pipe(stylus({use: [ nib() ], errors: true})).pipe(cssimport()).pipe(gulp.dest("./public/textEditorWidget"));
-});
+var tasks = [];
 
 // TypeScript
 var ts = require("gulp-typescript");
@@ -39,8 +24,8 @@ var vinylSourceStream = require("vinyl-source-stream");
 function makeBrowserify(sourcePath, destPath, outputName, standalone, taskName) {
   gulp.task((taskName || outputName) + "-browserify", function() {   
     var options = {};
-    if (standalone === true)
-       options = { standalone: "fTextEditorWidget" };
+    /*if (standalone === true)
+       options = { standalone: "fTextEditorWidget" };*/
     browserify(sourcePath+"index.js", options).
     transform("brfs").
     bundle().
@@ -54,34 +39,19 @@ makeBrowserify("./api/", "./public", "api");
 makeBrowserify("./components/", "./public", "components");
 makeBrowserify("./componentEditors/", "./public", "componentEditors");
 makeBrowserify("./data/", "./public", "data");
-makeBrowserify("./editors/docsbrowser/", "./public/editors", "docsbrowser/index", null, "docseditor");
-makeBrowserify("./editors/fText/", "./public/editors", "fText/index", false, "ftexteditor");
-makeBrowserify("./runtime/", "./public", "runtime");
-makeBrowserify("./settingsEditors/", "./public", "settingsEditors");
-makeBrowserify("./textEditorWidget/", "./public", "textEditorWidget/index", true, "textEditorWidget");
+
 
 // Watch
-gulp.task("watch", function() {
-  gulp.watch(["./editors/**/*.jade"], ["jade"]);
-  gulp.watch(["./editors/**/*.styl"], ["stylus"]);
-  
+gulp.task("watch", function() { 
   gulp.watch(["./api/*.js", "./api/*.ts"], ["api-browserify"]);
   gulp.watch("./data/*.js", ["data-browserify"]);
   gulp.watch("./components/*.js", ["components-browserify"]);
   gulp.watch("./componentEditors/*.js", ["componentEditors-browserify"]);
-  gulp.watch("./editors/docsbrowser/*.js", ["docsbrowser-browserify"]);
-  gulp.watch("./editors/fText/*.js", ["fText/index-browserify"]); 
-  gulp.watch("./runtime/*.js", ["runtime-browserify"]);
-  gulp.watch(["./settingsEditors/*.js", "./settingsEditors/*.html"], ["settingsEditors-browserify"]);
-  gulp.watch("./textEditorWidget/*.js", ["textEditorWidget/index-browserify"]);
-
+  
   gulp.watch(["./**/*.ts", "!./api/*.ts"], ["typescript"]);
 });
 
 gulp.task("watchts", function() {
-  gulp.watch("./**/*.jade", ["jade"]);
-  gulp.watch("./**/*.styl", ["stylus"]);
-
   gulp.watch(["./**/*.ts", "!./api/*.ts"], ["typescript"]);
 });
 
