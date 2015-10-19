@@ -9,6 +9,8 @@ export default class MouseInputConfig extends SupCore.data.base.ComponentConfig 
   }
 
   static create() {
+    console.log("MouseInputConfig.create");
+
     let emptyConfig: MouseInputConfigPub = {
       cameraActorName: "",
     };
@@ -17,18 +19,27 @@ export default class MouseInputConfig extends SupCore.data.base.ComponentConfig 
   
   pub: MouseInputConfigPub;
 
+  /**
+  * Called when the serveur loads, the scene loads
+  * pub is the loaded config, the call to super sets this.pub (and probably checks it agains schema)
+  */
   constructor(pub: MouseInputConfigPub) {
     // if (pub.whatever == null) pub.whatever = false;
     super(pub, MouseInputConfig.schema);
+    console.log("MouseInputConfig constructor", pub);
   }
 
   restore() {}
   destroy() {}
 
+  /**
+  * called when this.editConfig("setProperty", path, value) is called from a component editor
+  * If the method is overloaded here, it's super must be called for the new value to be saved
+  *
+  * calls in return the component's Updater and Editor with the actual value
+  */
   /*setProperty(path: string, value: any, callback: (err: string, actualValue?: any) => any) {
-    super.setProperty(path, value, (err, actualValue) => {
-      if (err != null) { callback(err); return; }
-      callback(null, actualValue);
-    });
+    console.log("MouseInputConfig setProperty", path, value, callback);
+    super.setProperty(path, value, callback);
   }*/
 }

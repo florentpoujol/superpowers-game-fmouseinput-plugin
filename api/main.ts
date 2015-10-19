@@ -23,11 +23,6 @@ module f {
     */
     isLayerActive: boolean = true;
 
-    /**
-    * Component instance on the engine side (of type "MouseInput extends SupEngine.ActorComponent").
-    */
-    private __inner: any;
-
     // ----------------------------------------
 
     /**
@@ -36,8 +31,9 @@ module f {
     constructor(actor: Sup.Actor) {
       super(actor);
       this.actor.mouseInput = this;
-      this.__inner = new (<any>SupEngine.componentClasses).MouseInput((<any>this.actor).__inner);
-      this.__inner.setOuter(this);
+      (<any>this).__inner = new (<any>SupEngine.componentClasses).MouseInput((<any>this.actor).__inner);
+      (<any>this).__inner.setOuter(this);
+      // __inner is the component instance on the engine side (of type "MouseInput extends SupEngine.ActorComponent").
 
       if (actor.eventEmitter == null)
         actor.eventEmitter = new (<any>window).EventEmitter(); // provided by Sparkminlab's EventEmitter plugin
@@ -72,6 +68,7 @@ module f {
     * Sets the camera actor or camera actor's name.
     */
     set cameraActor(actor: Sup.Actor|string) {
+      console.log("api component set cameraActor", actor);
       if (typeof actor === "string") {
         let oldActor = <string>actor;
         actor = <Sup.Actor>Sup.getActor(oldActor);
@@ -87,7 +84,7 @@ module f {
 
     // ----------------------------------------
 
-    update() {
+    update(): void {
       if (this.isLayerActive === false)
         return; // shouldn't be necessary since update() isn't called by the engine instance when the layer isn't active
 
@@ -126,14 +123,14 @@ module f {
       }
     }
 
-    destroy() {
+    destroy(): void {
       this.isLayerActive = false;
       this.isMouseOver = false;
       this.camera = null;
       this.ray = null;
       this.actor.mouseInput = null;
-      this.__inner._destroy();
-      this.__inner = null;
+      (<any>this).__inner._destroy();
+      (<any>this).__inner = null;
       super.destroy();
     }
   }

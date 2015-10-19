@@ -39,6 +39,7 @@ makeBrowserify("./api/", "./public", "api");
 makeBrowserify("./components/", "./public", "components");
 makeBrowserify("./componentEditors/", "./public", "componentEditors");
 makeBrowserify("./data/", "./public", "data");
+makeBrowserify("./runtime/", "./public", "runtime");
 
 
 // Watch
@@ -47,8 +48,9 @@ gulp.task("watch", function() {
   gulp.watch("./data/*.js", ["data-browserify"]);
   gulp.watch("./components/*.js", ["components-browserify"]);
   gulp.watch("./componentEditors/*.js", ["componentEditors-browserify"]);
+  gulp.watch("./runtime/*.js", ["runtime-browserify"]);
   
-  gulp.watch(["./**/*.ts", "!./api/*.ts"], ["typescript"]);
+  gulp.watch(["./**/*.ts", "!./api/*.ts", "!./project/**/*.ts"], ["typescript"]);
 });
 
 gulp.task("watchts", function() {
