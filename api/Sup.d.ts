@@ -1,3 +1,4 @@
+
 declare module Sup {
   function getActor(name: string): Actor;
 
@@ -17,8 +18,7 @@ declare module Sup {
   }
 
   class Actor {
-    eventEmitter: EventEmitter;
-    mouseInput: f.MouseInput;
+    fMouseInput: fMouseInput;
     camera: Camera;
   }
 

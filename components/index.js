@@ -1,3 +1,3 @@
 
-var MouseInput = require("./MouseInput");
-SupEngine.registerComponentClass("MouseInput", MouseInput.default);
+var fMouseInput = require("./fMouseInput");
+SupEngine.registerComponentClass("fMouseInput", fMouseInput.default);

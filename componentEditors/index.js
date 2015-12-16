@@ -1,3 +1,3 @@
 
-var MouseInputEditor = require("./MouseInputEditor");
-SupClient.registerComponentEditorClass("MouseInput", MouseInputEditor.default);
+var fMouseInputEditor = require("./fMouseInputEditor");
+SupClient.registerPlugin("componentEditors", "fMouseInput", fMouseInputEditor.default);

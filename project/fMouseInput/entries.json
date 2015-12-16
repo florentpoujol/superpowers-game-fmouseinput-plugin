@@ -1,0 +1,17 @@
+[
+  {
+    "id": "2",
+    "name": "Sprite",
+    "type": "sprite"
+  },
+  {
+    "id": "1",
+    "name": "Scene",
+    "type": "scene"
+  },
+  {
+    "id": "0",
+    "name": "MouseInput",
+    "type": "script"
+  }
+]

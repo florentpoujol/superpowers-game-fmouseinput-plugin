@@ -1,3 +1,3 @@
 
-var MouseInputConfig = require("./MouseInputConfig");
-SupCore.data.registerComponentConfigClass("MouseInput", MouseInputConfig.default);
+var fMouseInputConfig = require("./fMouseInputConfig");
+SupCore.system.data.registerComponentConfigClass("fMouseInput", fMouseInputConfig.default);

@@ -1,3 +1,3 @@
 
-var MouseInput = require("./MouseInput");
-SupRuntime.registerPlugin("MouseInput", MouseInput);
+var fMouseInput = require("./fMouseInput");
+SupRuntime.registerPlugin("fMouseInput", fMouseInput);

@@ -1,0 +1,9 @@
+{
+  "behaviors": {
+    "MouseInputBehavior": {
+      "scriptId": "0",
+      "parentBehavior": null,
+      "properties": []
+    }
+  }
+}
