@@ -1,12 +1,9 @@
 gitignore/
 node_modules/*
 
-project/*/builds/
-project/*/internals.json
-project/*/members.json
-
 public/*
 !public/docs
+!public/locales
 
 components/*.js
 !components/index.js
@@ -17,4 +14,5 @@ componentEditors/*.js
 data/*.js
 !data/index.js
 
-editors/**/*.js
+runtime/*.js
+!runtime/index.js
