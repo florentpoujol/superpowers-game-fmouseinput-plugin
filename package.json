@@ -1,7 +1,7 @@
 {
   "name": "sup-fmouseinput-plugin",
-  "version": "0.0.1",
-  "description": "fMouseInut.",
+  "version": "0.1.0",
+  "description": "Allows for easy setup of interactions between the mouse and actors in Superpowers, the HTML5 2D+3D game maker.",
   "repository": {
     "type": "git",
     "url": "https://github.com/florentpoujol/superpowers-fmouseinput-plugin"
