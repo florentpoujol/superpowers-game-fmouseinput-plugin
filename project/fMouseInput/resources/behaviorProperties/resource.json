@@ -3,7 +3,12 @@
     "MouseInputBehavior": {
       "scriptId": "0",
       "parentBehavior": null,
-      "properties": []
+      "properties": [
+        {
+          "name": "id",
+          "type": "number"
+        }
+      ]
     }
   }
 }

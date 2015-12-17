@@ -67,24 +67,24 @@
           "id": "1"
         },
         {
-          "type": "fMouseInput",
-          "config": {
-            "cameraActorName": "Camera"
-          },
-          "id": "4"
-        },
-        {
           "type": "Behavior",
           "config": {
             "behaviorName": "MouseInputBehavior",
             "propertyValues": {}
           },
           "id": "5"
+        },
+        {
+          "type": "fMouseInput",
+          "config": {
+            "cameraActorName": "Camera"
+          },
+          "id": "6"
         }
       ],
       "position": {
-        "x": 0,
-        "y": 0,
+        "x": -0.3321083188056946,
+        "y": 0.2767569124698639,
         "z": -10
       },
       "orientation": {
@@ -101,6 +101,68 @@
       "visible": true,
       "layer": 0,
       "prefabId": null
+    },
+    {
+      "id": "3",
+      "name": "Actor2",
+      "children": [],
+      "components": [
+        {
+          "type": "SpriteRenderer",
+          "config": {
+            "spriteAssetId": "2",
+            "animationId": null,
+            "horizontalFlip": false,
+            "verticalFlip": false,
+            "castShadow": false,
+            "receiveShadow": false,
+            "color": "ffffff",
+            "overrideOpacity": false,
+            "opacity": null,
+            "materialType": "basic",
+            "shaderAssetId": null
+          },
+          "id": "1"
+        },
+        {
+          "type": "Behavior",
+          "config": {
+            "behaviorName": "MouseInputBehavior",
+            "propertyValues": {
+              "id": {
+                "type": "number",
+                "value": 1
+              }
+            }
+          },
+          "id": "5"
+        },
+        {
+          "type": "fMouseInput",
+          "config": {
+            "cameraActorName": "Camera"
+          },
+          "id": "6"
+        }
+      ],
+      "position": {
+        "x": 0.44281139969825745,
+        "y": -0.36900949478149414,
+        "z": -10
+      },
+      "orientation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "visible": true,
+      "layer": 0
     }
   ],
   "formatVersion": 1

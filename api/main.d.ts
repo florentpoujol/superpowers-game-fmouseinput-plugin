@@ -8,19 +8,14 @@
 // You can also access the documentation offline in the plugin's "public/docs" folder 
 // or via the "Plugins documentation" tool provided by the "Plugins documentation" plugin: https://github.com/florentpoujol/superpowers-pluginsdocumentation-plugin
 
-
-// accessible on actors throught the "mouseInput" property
+// accessible on actors throught the "fMouseInput" property
 declare class fMouseInput extends Sup.ActorComponent {
   isMouseOver: boolean; 
   ray: Sup.Math.Ray;
-  isLayerActive: boolean;
-  eventEmitter: EventEmitter;
+  emitter: EventEmitter;
+  camera: Sup.Camera|Sup.Actor|string; // actually always return a Sup.Camera instance
 
   constructor(actor: Sup.Actor);
-
-  camera: Sup.Camera;
-  cameraActor: Sup.Actor|string;
-
   update(): void;
   destroy(): void;
 }
