@@ -11,7 +11,6 @@
 // accessible on actors throught the "fMouseInput" property
 declare class fMouseInput extends Sup.ActorComponent {
   isMouseOver: boolean; 
-  ray: Sup.Math.Ray;
   emitter: EventEmitter;
   camera: Sup.Camera|Sup.Actor|string; // actually always return a Sup.Camera instance
 

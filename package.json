@@ -24,7 +24,7 @@
   },
   "scripts": {
     "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
-    "gendoc": "typedoc --out gitignore/docs api/main.ts --mode file --module commonjs --target ES5 --name \"fMouseInput plugin\" --theme minimal",
+    "gendoc": "typedoc --out public/docs api/main.ts --mode file --module commonjs --target ES5 --name \"fMouseInput component plugin\" --theme minimal --readme tutorial.md",
     
     "linkplugindev": "mklink /j \"../../app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",
     "linkpluginrelease": "mklink /j \"../../../release/app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",

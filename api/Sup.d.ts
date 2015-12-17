@@ -20,6 +20,7 @@ declare module Sup {
   class Actor {
     fMouseInput: fMouseInput;
     camera: Camera;
+    getName(): string;
   }
 
   class Camera extends ActorComponent {
