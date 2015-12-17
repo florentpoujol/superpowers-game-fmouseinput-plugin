@@ -1,10 +1,6 @@
 gitignore/
 node_modules/*
 
-public/*
-!public/docs
-!public/locales
-
 components/*.js
 !components/index.js
 
