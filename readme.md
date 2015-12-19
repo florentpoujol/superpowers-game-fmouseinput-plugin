@@ -1,6 +1,10 @@
 # Superpowers fMouseInput plugin
 
-Ths plugin expose the `fMouseInput` actor component and allows for easy setup of interactions between the mouse and actors in the `Sup Game` system of [Superpowers, the extensible HTML5 2D+3D game engine](http://arklinlabs.com).  
+This plugin makes it dead simple to setup interactions between the mouse and actors.
+
+It expose the `fMouseInput` actor component on which mouse input events are emitted whenever the mouse hovers an actor and some mouse button are clicked.
+
+For the `Sup Game` system of [Superpowers, the extensible HTML5 2D+3D game engine](http://arklinlabs.com).  
 
 
 ## Documentation

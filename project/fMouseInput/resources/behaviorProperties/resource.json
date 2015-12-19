@@ -2,6 +2,7 @@
   "behaviors": {
     "MouseInputBehavior": {
       "scriptId": "0",
+      "line": 0,
       "parentBehavior": null,
       "properties": [
         {

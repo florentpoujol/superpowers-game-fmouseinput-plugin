@@ -11,7 +11,6 @@ class MouseInputBehavior extends Sup.Behavior {
     this.actor.fMouseInput.emitter.on("rightClick", () => { console.log("right click", this); });
     this.actor.fMouseInput.emitter.on("rightClick", this.onRightClick);
 
-    
     this.actor.fMouseInput.emitter.on("wheelUp", () => { console.log("wheel up", this.id); });
     this.actor.fMouseInput.emitter.on("wheelDown", () => { console.log("wheel down", this.id); });
     

@@ -24,5 +24,6 @@
     "alpha": null,
     "normal": null
   },
-  "formatVersion": 2
+  "formatVersion": 3,
+  "wrapping": "clampToEdge"
 }

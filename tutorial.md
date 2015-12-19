@@ -1,8 +1,10 @@
-# Superpowers fMouseInput plugin
+# Sup Game's fMouseInput component
 
-Once setup, this plugin will emit mouse input events on actors that interact with the mouse.
+This plugin makes it dead simple to setup interactions between the mouse and actors.
 
-The plugin expose to the API a single `fMouseInput` actor component, accessible on actors through the `fMouseInput` property.
+It expose the `fMouseInput` actor component on which mouse input events are emitted whenever the mouse hovers an actor and some mouse button are clicked.
+
+[Return to the GitHub repo](https://github.com/florentpoujol/superpowers-fmouseinput-plugin).
 
 
 ## Events / Interactions
