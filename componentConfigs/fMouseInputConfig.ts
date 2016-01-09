@@ -1,3 +1,4 @@
+/// <reference path="../../../default/scene/ComponentConfig.d.ts" />
 
 export interface fMouseInputConfigPub {
   cameraActorName: string;

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": true
+  },
+  "files": [
+    "index.d.ts",
+    "componentEditors/fMouseInputEditor.ts",
+    "componentConfigs/fMouseInputConfig.ts",
+    "components/fMouseInput.ts"
+  ]
+}

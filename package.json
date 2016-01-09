@@ -1,10 +1,10 @@
 {
-  "name": "sup-fmouseinput-plugin",
-  "version": "0.1.1",
+  "name": "superpowers-game-fmouseinput-plugin",
+  "version": "0.2.0",
   "description": "Allows for easy setup of interactions between the mouse and actors in the Superpowers Game system for Superpowers, the HTML5 2D+3D game maker.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/florentpoujol/superpowers-fmouseinput-plugin"
+    "url": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin"
   },
   "author": "Florent Poujol <florent.poujol@gmail.com> (http://florentpoujol.fr)",
   "dependencies": {
@@ -20,7 +20,7 @@
     "plugin"
   ],
   "bugs": {
-    "url": "https://github.com/florentpoujol/superpowers-fmouseinput-plugin/issues"
+    "url": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin/issues"
   },
   "scripts": {
     "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
@@ -30,11 +30,13 @@
     "linkpluginrelease": "mklink /j \"../../../release/app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",
 
     "linkprojectdev": "mklink /j \"../../data/projects/fMouseInput\" \"./project/fMouseInput\"",
-    "linkprojectrelease": "mklink /j \"../../../localprojects/fMouseInput\" \"./project/fMouseInput\""
+    "linkprojectrelease": "mklink /j \"../../../localprojects/fMouseInput\" \"./project/fMouseInput\"",
+
+    "build": "gulp --gulpfile=../../../../../scripts/pluginGulpfile.js --cwd=."
   },
   "maintainers": [
     "Florent Poujol <florent.poujol@gmail.com>"
   ],
-  "homepage": "https://github.com/florentpoujol/superpowers-fmouseinput-plugin",
+  "homepage": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin",
   "license": "MIT"
 }

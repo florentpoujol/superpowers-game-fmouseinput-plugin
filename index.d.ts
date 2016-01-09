@@ -1,8 +1,7 @@
-///<reference path="../../app/typings/tsd.d.ts"/>
-///<reference path="../../app/SupClient/SupClient.d.ts"/>
-///<reference path="../../app/SupCore/SupCore.d.ts"/>
-///<reference path="../../app/systems/supGame/SupEngine/SupEngine.d.ts"/>
-///<reference path="../../app/systems/supGame/SupRuntime/SupRuntime.d.ts"/>
+///<reference path="../../../../../SupClient/SupClient.d.ts"/>
+///<reference path="../../../../../SupCore/SupCore.d.ts"/>
+///<reference path="../../../SupEngine/SupEngine.d.ts"/>
+///<reference path="../../../SupRuntime/SupRuntime.d.ts"/>
 
 declare class EventEmitter {
   static listenerCount(emitter: EventEmitter, event: string): number;

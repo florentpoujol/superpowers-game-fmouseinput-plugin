@@ -1,6 +1,6 @@
 /// <reference path="../index.d.ts" />
 
-import { fMouseInputConfigPub } from "../data/fMouseInputConfig";
+import { fMouseInputConfigPub } from "../componentConfigs/fMouseInputConfig";
 
 
 export class fMouseInputUpdater {
