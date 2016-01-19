@@ -2,6 +2,6 @@
   "id": "gWts",
   "name": "fMouseInput",
   "description": "",
-  "formatVersion": 3,
-  "system": "supGame"
+  "formatVersion": 5,
+  "systemId": "game"
 }

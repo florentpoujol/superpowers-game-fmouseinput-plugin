@@ -1,26 +1,36 @@
 class MouseInputBehavior extends Sup.Behavior {
   id: number = 0;
   
-  awake() {    
+  awake() { 
+    
     this.actor.fMouseInput.emitter.addListener("mouseEnter", () => { console.log("enter", this.id); });
     this.actor.fMouseInput.emitter.addListener("mouseExit", () => { console.log("out", this.id); });
-    this.actor.fMouseInput.emitter.addListener("mouseMove", () => { console.log("move", this.id); });
+    // this.actor.fMouseInput.on("mouseMove", (mouseDelta) => { console.log("move", this.id, mouseDelta); });
+      
     
-    this.actor.fMouseInput.emitter.on("leftClick", () => { console.log("left click", this.id); });
-    this.actor.fMouseInput.emitter.on("middleClick", () => { console.log("middle click", this.id); });  
-    this.actor.fMouseInput.emitter.on("rightClick", () => { console.log("right click", this); });
-    this.actor.fMouseInput.emitter.on("rightClick", this.onRightClick);
+    this.actor.fMouseInput.on("leftClickPressed", () => { console.log("left click pressed", this.id); });
+    this.actor.fMouseInput.on("leftClickDown", () => { console.log("left click down", this.id); });
+    this.actor.fMouseInput.on("leftClickReleased", () => { console.log("left click release", this.id); });
 
-    this.actor.fMouseInput.emitter.on("wheelUp", () => { console.log("wheel up", this.id); });
-    this.actor.fMouseInput.emitter.on("wheelDown", () => { console.log("wheel down", this.id); });
+    this.actor.fMouseInput.on("middleClickPressed", () => { console.log("middle click pressed", this.id); });      
+    this.actor.fMouseInput.on("middleClickDown", () => { console.log("middle click down", this.id); });  
+    this.actor.fMouseInput.on("middleClickReleased", () => { console.log("middle click released", this.id); });  
     
-    let listener = () => { console.log("wheel down 2"); };
-    this.actor.fMouseInput.emitter.on("onWheelDown", listener);
-    this.actor.fMouseInput.emitter.removeListener("onWheelDown", listener);
+    this.actor.fMouseInput.on("rightClickPressed", () => { console.log("right click pressed", this.id); });
+    this.actor.fMouseInput.on("rightClickDown", () => { console.log("right clickdown", this.id); });
+    this.actor.fMouseInput.on("rightClickReleased", ()=>{ this.onRightClickReleased() });
+
+    this.actor.fMouseInput.on("wheelUp", () => { console.log("wheel up", this.id); });
+    this.actor.fMouseInput.on("wheelDown", () => { console.log("wheel down", this.id); });
+    
+    let listener = () => { console.log("wheel down", this.id); };
+    this.actor.fMouseInput.on("wheelDown", listener);
+    this.actor.fMouseInput.off("wheelDown", listener);
+    
   }
   
-  onRightClick() {
-    console.log("behavior onRightClick", this);
+  onRightClickReleased() {
+    console.log("right click released", this.id);
   }
   
   update() {

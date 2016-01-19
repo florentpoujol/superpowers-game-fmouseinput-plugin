@@ -6,7 +6,7 @@ export interface fMouseInputConfigPub {
 
 export default class fMouseInputConfig extends SupCore.Data.Base.ComponentConfig {
 
-  static schema = {
+  static schema: SupCore.Data.Schema = {
     cameraActorName: { type: "string?", min: 0, mutable: true },
   }
 

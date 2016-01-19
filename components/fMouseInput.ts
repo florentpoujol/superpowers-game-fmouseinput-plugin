@@ -34,7 +34,7 @@ export default class fMouseInput extends SupEngine.ActorComponent {
   
   update() {
     if (this.outer != null && this.isLayerActive === true && this.actor.threeObject.visible === true)
-      this.outer.update();
+      this.outer._update();
   }
 
   // called by Superpowers when a layer is (de)actived

@@ -67,14 +67,6 @@
           "id": "1"
         },
         {
-          "type": "Behavior",
-          "config": {
-            "behaviorName": "MouseInputBehavior",
-            "propertyValues": {}
-          },
-          "id": "5"
-        },
-        {
           "type": "fMouseInput",
           "config": {
             "cameraActorName": "Camera"

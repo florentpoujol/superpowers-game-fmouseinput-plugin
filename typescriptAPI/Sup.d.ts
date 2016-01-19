@@ -27,6 +27,8 @@ declare module Sup {
   }
 
   module Input {
+    function wasMouseButtonJustPressed(key: number): boolean;
+    function isMouseButtonDown(key: number): boolean;
     function wasMouseButtonJustReleased(key: number): boolean;
     function getMousePosition(): { x: number, y: number };
     function getMouseDelta(): { x: number, y: number };

@@ -36,7 +36,7 @@ var fMouseInput = (function (_super) {
     }
     fMouseInput.prototype.update = function () {
         if (this.outer != null && this.isLayerActive === true && this.actor.threeObject.visible === true)
-            this.outer.update();
+            this.outer._update();
     };
     // called by Superpowers when a layer is (de)actived
     fMouseInput.prototype.setIsLayerActive = function (active) {
