@@ -1,8 +1,8 @@
-# Superpowers game fMouseInput plugin
+# Superpowers Game fMouseInput component
 
-This plugin makes it dead simple to setup interactions between the mouse and actors in the `Superpowers Game` system of [Superpowers, the extensible HTML5 2D+3D game engine](http://superpowers-html5.com).
+This plugin makes it super simple to setup interactions between the mouse and actors in the `Superpowers Game` system of [Superpowers, the extensible HTML5 2D+3D game engine](http://superpowers-html5.com).
 
-It expose the `fMouseInput` actor component on which mouse input events are emitted whenever the mouse hovers an actor and some mouse button are clicked.
+It exposes the `fMouseInput` actor component on which mouse input events are emitted whenever the mouse hovers an actor and some mouse button are clicked.
 
 
 ## Documentation
@@ -20,10 +20,10 @@ __Advanced:__
 
 Get it via `npm`:
         
-    cd app/systems/supGame/plugins
-    npm install superpowres-game-fmouseinput-plugin
+    cd app/systems/game/plugins
+    npm install superpowers-game-fmouseinput-plugin
 
-The name of the vendors or plugins in the `app/systems/supGame/plugins/` folder don't matter.  
+The name of the vendors or plugins in the `app/systems/game/plugins/` folder don't matter.  
 So you can leave the plugin path as `node_modules/superpowres-game-fmouseinput-plugin`.
 
 
@@ -35,9 +35,15 @@ Tell this newly placed component which camera the actor should be visible from :
 - if added by script, pass the camera component, its actor or its name to the `camera` property.  
 - if added in the scene editor, sets the camera's actor's name in the `Camera` field.
 
-Then from your scripts, add some listeners for the events bellow on the event emitter exposed by the component through the `emitter` property.
+Then from your scripts, add some listeners for the events bellow via the component's `on(event, listener)` method.
 
-Events you can listen to are : `mouseEnter`, `mouseExit`, `mouseMouve`, `leftClick`, `middleClick`, `rightClick`, `wheelUp`, `wheelDown`.
+Events you can listen to are : 
+
+- `mouseEnter`, `mouseExit`, `mouseMouve`, 
+- `leftClickPressed`, `leftClickDown`, `leftClickReleased`
+- `middleClickPressed`, `middleClickDown`, `middleClickReleased`
+- `rightClickPressed`, `rightClickDown`, `rightClickReleased` 
+- `wheelUp`, `wheelDown`.  
 
 Example : 
 
@@ -46,18 +52,11 @@ There is another actor named `"Camera"` with a `Sup.Camera` component.
 
     class MouseInputBehavior extends Sup.Behavior {
       awake() {
-        
-        // if not already done from the scene editor :
-        // add the component
-        new fMouseInput(this.actor);
-        
-        // the set the camera
-        this.actor.fMouseInput.camera = "Camera";
-
-        // then just setup some interactions
-        this.actor.fMouseInput.emitter.on("leftClick", () => { 
+        // the component has been added through the scene editor,
+        // so all you have to do is setup some interactions
+        this.actor.fMouseInput.on("leftClickReleased", () => { 
           // do stuff !
         });
       }
     }
-    Sup.registerBehavior(ButtonBehavior);
+    Sup.registerBehavior(MouseInputBehavior);

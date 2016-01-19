@@ -1,50 +1,30 @@
 # Superpowers Game fMouseInput component
 
-This plugin makes it dead simple to setup interactions between the mouse and actors.
+This plugin brings the `fMouseInput` actor component which makes it super simple to setup interactions between the mouse and actors.
 
-It expose the `fMouseInput` actor component on which mouse input events are emitted whenever the mouse hovers an actor and some mouse button are clicked.
+It allows to easily answer questions like these and do something whenever these events happens:
+- is the mouse pointer over my actor now ?
+- did the player clicked on a button while hovering my actor ?
+- has the mouse left my actor ?
 
 [Return to the GitHub repo](https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin).
 
 
-## Events / Interactions
-
-Each component instance has an event emitter accessible through the `emitter` property on which the following events may be emitted :
-
-- `mouseEnter` when the mouse wasn't on the actor the previous tick and is on the actor this tick.
-- `mouseExit` when the mouse was on the actor the previous tick and isn't on the actor this tick.
-- `mouseMove` when the mouse is on the actor and has moved from the previous tick (it isn't emitted if the mouse in over the actor but doesn't move).
-- `leftClick` when the mouse is on the actor and the left mouse button was released during the previous tick.
-- `middleClick` when the mouse is on the actor and the middle mouse button (usually the wheel) was released during the previous tick.
-- `rightClick` when the mouse is on the actor and the right mouse button was released during the previous tick.
-- `wheelUp`, `wheelDown` when the mouse is on the actor and the wheel was turned up or down during the previous tick.
-
-The component also has a `isMouseOver` property that is `true` when the mouse is over the actor and `false` otherwise.
-
-
 ## Setup 
 
-Place one component (via script or the scene editor) on each actors you want to check for interaction with the mouse.
+`fMouseInput` is an actor component (like a `SpriteRenderer`) which has to be first placed (via script or the scene editor) on each actors you want to check for interaction with the mouse.
 
-Tell this newly placed component which camera the actor should be visible from :
-- if added by script, pass the camera component, its actor or its name to the `camera` property.  
-- if added in the scene editor, sets the camera's actor's name in the `Camera` field.
+Then, tell the newly placed component which camera the actor should be visible from.
+- If you added the component in the scene editor, sets the camera's actor's name in the `Camera` field.
 
-Then from your scripts, just add some listeners for the events above.
+![Add and setup the component via the scene editor](https://dl.dropboxusercontent.com/u/51314747/superpowers/fmouseinput_tutorial_add_component_in_scene.jpg)
 
-Note that an `fMouseInput` component will be added automatically on the camera's actor.
+- If you added the component by script, pass the camera component, its actor or its name to the `camera` property.
 
+Example via script :
 
-## Example of a basic button
-
-This behavior is on a button, an actor which should be checked for interaction with the mouse.
-
-There is another actor named `"Camera"` with a `Sup.Camera` component.
-
-    class ButtonBehavior extends Sup.Behavior {
+    class MouseInputBehavior extends Sup.Behavior {
       awake() {
-        
-        // if not already done from the scene editor :
         // add the component
         new fMouseInput(this.actor);
         
@@ -54,14 +34,71 @@ There is another actor named `"Camera"` with a `Sup.Camera` component.
         this.actor.fMouseInput.camera = Sup.getActor("Camera");
         // or
         this.actor.fMouseInput.camera = Sup.getActor("Camera").camera;
-
-        // then just setup some interactions
-        this.actor.fMouseInput.emitter.on("leftClick", () => { 
-          // do stuff !
-        });
       }
     }
-    Sup.registerBehavior(ButtonBehavior);
+    Sup.registerBehavior(MouseInputBehavior);
+
+Note that the actor must also have some kind of renderer (like a `SpriteRenderer`) and that an `fMouseInput` component will be added automatically on the camera's actor.
+
+
+## Interactions
+
+One way to setup interactions is to check the value of the component's `isMouseOver` property.
+
+Once you are sure the mouse is over the actor, you can check for mouse button press to create a button for instance.
+
+    class MouseInputBehavior extends Sup.Behavior {
+      update() {
+        if (this.actor.fMouseInput.isMouseOver && Sup.Input.wasMouseButtonJustReleased(0)) {
+            // do stuff
+        }
+      }
+    }
+    Sup.registerBehavior(MouseInputBehavior);
+
+You can also check when the value change to know when the mouse enters or exits the actor but their is an even easier way.
+
+You can listen to a whole bunch of events like `mouseEnter` or `leftClickReleased` for instance.  
+So all you have to do is setup a listener function with the component's `on(eventName, listenerFunction)` method :
+
+    class MouseInputBehavior extends Sup.Behavior {
+      awake() {
+
+        this.actor.fMouseInput.on("mouseEnter", () => {
+          // do stuff when the mouse just entered the actor
+        });
+
+        this.actor.fMouseInput.on("leftClickReleased", () => { this.onLeftClick(); });
+      }
+
+      onLeftCLick() {
+        // do stuff when the left mouse button has been released
+      }
+    }
+    Sup.registerBehavior(MouseInputBehavior);
+
+
+## Events
+
+For convenience, you have full access to the event emitter via the component's `emitter` property.
+
+Here is the list of the default events that you can listen to:
+
+- `mouseEnter` when the mouse wasn't on the actor the previous tick and is on the actor this tick.
+- `mouseExit` when the mouse was on the actor the previous tick and isn't on the actor this tick.
+- `mouseMove` when the mouse is on the actor and has moved from the previous tick (it isn't emitted if the mouse in over the actor but doesn't move).
+- `leftClickPressed`, `leftClickDown`, `leftClickReleased` when the mouse is on the actor and the left mouse button was pressed/released during the previous tick or is currently down.
+- `middleClickPressed`, `middleClickDown`, `middleClickReleased` when the mouse is on the actor and the middle mouse button (usually the wheel) was pressed/released during the previous tick or is currently down.
+- `rightClickPressed`, `rightClickDown`, `rightClickReleased` when the mouse is on the actor and the right mouse button was pressed/released during the previous tick or is currently down.
+- `wheelUp`, `wheelDown` when the mouse is on the actor and the wheel is turned up or down during this tick.
+
+The component also has a `isMouseOver` property that is `true` when the mouse is over the actor and `false` otherwise.
+
+
+
+
+
+
 
 
 ## Misc

@@ -7,14 +7,6 @@
     "url": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin"
   },
   "author": "Florent Poujol <florent.poujol@gmail.com> (http://florentpoujol.fr)",
-  "dependencies": {
-
-  },
-  "devDependencies": {
-    "gulp": "3.9.x",
-    "typescript": "1.6.x",
-    "browserify": "10.2.x"
-  },
   "keywords": [
     "superpowers",
     "plugin"
@@ -23,7 +15,6 @@
     "url": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin/issues"
   },
   "scripts": {
-    "compilets": "tsc api/ff.ts --out gitignore/ff.js --module commonjs --target ES5",
     "gendoc": "typedoc --out public/docs api/main.ts --mode file --module commonjs --target ES5 --name \"fMouseInput component plugin\" --theme minimal --readme tutorial.md",
     
     "linkplugindev": "mklink /j \"../../app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",
