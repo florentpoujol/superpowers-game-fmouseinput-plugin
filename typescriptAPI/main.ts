@@ -82,7 +82,7 @@ class fMouseInput extends Sup.ActorComponent {
   // ----------------------------------------
 
   /**
-  * The event emitter on which mouse input events are emitted.
+  * The event emitter on which mouse input events are emitted (of type EventEmitter).
   */
   emitter: any; // can't define as EventEmitter here...
 
@@ -160,10 +160,13 @@ class fMouseInput extends Sup.ActorComponent {
   // ----------------------------------------
 
   /**
-  * Tell which Sup.Input method and button id check for each events.
+  * Tell which Sup.Input method and button id to check for each events.
   */
-  static eventsData: { [event: string]: { functionName: string, buttonId: number } } = {
-
+  static eventsData: { [event: string]: { functionName: string, buttonId: number } };
+  /**
+  * @private
+  */
+  eventsData = {
     leftClickPressed: { functionName: "wasMouseButtonJustPressed", buttonId: 0 },
     leftClickDown: { functionName: "isMouseButtonDown", buttonId: 0 },
     leftClickReleased: { functionName: "wasMouseButtonJustReleased", buttonId: 0 },

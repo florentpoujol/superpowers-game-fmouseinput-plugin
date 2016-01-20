@@ -1,6 +1,6 @@
 {
   "name": "superpowers-game-fmouseinput-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Allows for easy setup of interactions between the mouse and actors in the Superpowers Game system for Superpowers, the HTML5 2D+3D game maker.",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "url": "https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin/issues"
   },
   "scripts": {
-    "gendoc": "typedoc --out public/docs api/main.ts --mode file --module commonjs --target ES5 --name \"fMouseInput component plugin\" --theme minimal --readme tutorial.md",
+    "gendoc": "typedoc --out gitignore/docs typescriptAPI/main.ts --mode file --module commonjs --target ES5 --name \"fMouseInput actor component\" --theme minimal --readme readme.md",
     
     "linkplugindev": "mklink /j \"../../app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",
     "linkpluginrelease": "mklink /j \"../../../release/app/systems/supGame/plugins/florentpoujol/fMouseInput\" \"./\"",
