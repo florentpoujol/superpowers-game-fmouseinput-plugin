@@ -9,5 +9,10 @@
     "componentEditors/fMouseInputEditor.ts",
     "componentConfigs/fMouseInputConfig.ts",
     "components/fMouseInput.ts"
+  ],
+  "exclude": [
+    "gitignore", 
+    "project",
+    "node_modules"
   ]
 }

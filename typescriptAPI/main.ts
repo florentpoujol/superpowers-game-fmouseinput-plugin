@@ -1,7 +1,6 @@
 /// <reference path="../index.d.ts" />
 /// <reference path="Sup.d.ts" />
 
-
 class fMouseInput extends Sup.ActorComponent {
 
   /**
@@ -36,48 +35,45 @@ class fMouseInput extends Sup.ActorComponent {
 
   private _camera: Sup.Camera;
 
+  // only called by the Engine conmponent
+  setCameraActorName(name: string): void {
+    const actor: Sup.Actor = Sup.getActor(name);
+    
+    if (actor == null) {
+      console.error("fMouseInput.setCameraActorName(): actor with name '"+name+"' isn't found.");
+      return;
+    }
+    
+    if (actor.camera == null) {
+      console.error("fMouseInput.setCameraActorName(): actor with name '"+name+"' has no Camera component.");
+      return;
+    }
+    
+    this.setCameraComponent(actor.camera);
+  }
+
   /**
   * The camera component the actor should be visible from.
   */
-  set camera(camera: Sup.Camera|Sup.Actor|string) {
-    let actor: Sup.Actor;
-    if (typeof camera === "string") {
-      const actorName = (camera as string);
-      actor = (Sup.getActor(actorName) as Sup.Actor);
-      if (actor == null) {
-        console.error("fMouseInput.camera setter: actor with name '"+actorName+"' not found.");
-        return;
-      }
-    }
-    else {
-      if (camera["camera"] != null) { // suppose actor
-        actor = (camera as Sup.Actor);
-      }
-      else if (camera["actor"] != null) // suppose camera component
-        actor = (camera["actor"] as Sup.Actor);
-      else {
-        // unlikely to happend but better be safe !
-        console.error("fMouseInput.camera setter: unable to do anything with the value.", camera);
-        return;
-      }
-    }
+  setCameraComponent(camera: Sup.Camera): void {
+    let actor: Sup.Actor = camera.actor;
 
-    if (actor.camera == null) {
-      console.error("fMouseInput.camera setter: actor with name '"+actor.getName()+"' has no Camera component.");
+    if (actor == null) { // unlikely to happend but better be safe
+      console.error("fMouseInput.setCameraComponent(): the parameter's value does not appear to be an actor component.", camera);
       return;
     }
 
     this._camera = actor.camera;
-    
+
     if (actor.fMouseInput == null)
       new fMouseInput(actor);
 
     this._ray = actor.fMouseInput["_ray"];
   }
 
-  get camera(): Sup.Camera|Sup.Actor|string {
-    return this._camera; // actually always return a Sup.Camera instance
-  }
+  getCameraComponent(): Sup.Camera {
+    return this._camera;
+  };
 
   // ----------------------------------------
 
@@ -87,31 +83,9 @@ class fMouseInput extends Sup.ActorComponent {
   emitter: any; // can't define as EventEmitter here...
 
   /**
-  * Adds the `listener` function for the specified `event`.
-  * @param event The event name.
-  * @param listener The listener function.
-  * @return The event emitter so that calls can be chained.
+  * The list of event name's listened to (except the mouse events)
   */
-  on(event: string, listener: Function) {
-    return this.emitter.on(event, listener);
-  }
-
-  /**
-  * Removes the `listener` function for the specified `event`.
-  * @param event The event name.
-  * @param listener The listener function.
-  * @return The event emitter so that calls can be chained.
-  */
-  off(event: string, listener: Function) {
-    return this.emitter.removeListener(event, listener);
-  }
-
-  // ----------------------------------------
-  
-  /**
-  * The list of event name's listened to.
-  */
-  private _events = new Array<string>();
+  private _eventsListenedTo = new Array<string>();
 
   /**
   * Tell whether the `mouseMove` event has listeners and should be emitted.
@@ -124,17 +98,17 @@ class fMouseInput extends Sup.ActorComponent {
   * @param listener The listener function.
   */
   private _onNewListener = (event: string, listener: Function) => { // set as an arrow function so that 'this' stays the component
-    if (this._events.indexOf(event) === -1) {
-      this._events.push(event);
+    if (this._eventsListenedTo.indexOf(event) === -1) {
+      this._eventsListenedTo.push(event);
       
       if (event === "mouseMove")
         this._emitMouseMove = true;
       else if (
         event !== "mouseEnter" && event !== "mouseExit" 
         && event !== "newListener" && event !== "removeListener"
-        && fMouseInput.eventsData[event] == null
+        && fMouseInput.behaviorByEvents[event] == null
       )
-        console.error(`fMouseInput: You listen to the '${event}' event on the actor named '${this.actor.getName()}' but there is no data for such event. Make sure you didn't made a typo, or add the corresponding data to the 'fMouseInput.eventsData' object.`);
+        console.error(`fMouseInput: You listen to the '${event}' event on the actor named '${this.actor.getName()}' but there is no data for such event. Make sure you didn't made a typo, or add the corresponding data to the 'fMouseInput.behaviorByEvents' object.`);
     }
   };
 
@@ -147,9 +121,9 @@ class fMouseInput extends Sup.ActorComponent {
     // the removeListener event is emitted AFTER a listener has been removed
     if (this.emitter.listeners(event).length === 0) {
       // there is no more listener for that event
-      const id = this._events.indexOf(event);
+      const id = this._eventsListenedTo.indexOf(event);
       if (id >= -1) {
-        this._events.splice(id, 1);
+        this._eventsListenedTo.splice(id, 1);
         
         if (event === "mouseMove")
           this._emitMouseMove = false;
@@ -162,11 +136,7 @@ class fMouseInput extends Sup.ActorComponent {
   /**
   * Tell which Sup.Input method and button id to check for each events.
   */
-  static eventsData: { [event: string]: { functionName: string, buttonId: number } };
-  /**
-  * @private
-  */
-  eventsData = {
+  static behaviorByEvents: { [event: string]: { functionName: string, buttonId: number } } = {
     leftClickPressed: { functionName: "wasMouseButtonJustPressed", buttonId: 0 },
     leftClickDown: { functionName: "isMouseButtonDown", buttonId: 0 },
     leftClickReleased: { functionName: "wasMouseButtonJustReleased", buttonId: 0 },
@@ -193,7 +163,7 @@ class fMouseInput extends Sup.ActorComponent {
     if (this.actor.camera != null) // this component is on the same actor as the camera
       this._ray.setFromCamera(this._camera, Sup.Input.getMousePosition());
         
-    else if (this._ray != null && this._events.length > 0) { // this component is on an actor to be checked
+    else if (this._ray != null && this._eventsListenedTo.length > 0) { // this component is on an actor to be checked
       const hit = this._ray.intersectActor(this.actor)[0];
 
       if (hit != null) { // the mouse is hover the actor's renderer this frame
@@ -214,9 +184,9 @@ class fMouseInput extends Sup.ActorComponent {
             this.emitter.emit("mouseMove", mouseDelta);
         }
 
-        for (const event of this._events) {
-          const data = fMouseInput.eventsData[event];
-          if (data != null && Sup.Input[data.functionName](data.buttonId) === true)
+        for (const event of this._eventsListenedTo) {
+          const behavior = fMouseInput.behaviorByEvents[event];
+          if (behavior != null && Sup.Input[behavior.functionName](behavior.buttonId) === true)
             this.emitter.emit(event);
         }
       }
@@ -224,12 +194,12 @@ class fMouseInput extends Sup.ActorComponent {
   }
 
   destroy(): void {
-    this.isMouseOver = false;
-    this.camera = null;
+    this._camera = null;
+    this._ray = null;
+    this._eventsListenedTo = null;
     this._emitMouseMove = false;
+    this.isMouseOver = false;
     this.emitter.removeAllListeners();
-    this._events = null;
-    this["_ray"] = null;
     this["__inner"]._destroy();
     this["__inner"] = null;
     this.actor.fMouseInput = null;

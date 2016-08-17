@@ -10,26 +10,12 @@ It allows to easily answer questions like these and do something whenever these 
 - has the mouse left my actor ?
 
 
-## Documentation
-
-[http://florentpoujol.github.io/superpowers-game-fmouseinput-plugin](http://florentpoujol.github.io/superpowers-game-fmouseinput-plugin)
-
-You can also access it offline in Superpowers' client with the [plugin documentation](https://github.com/florentpoujol/superpowers-common-pluginsdocs-plugin) plugin, or find it directly in the plugin's `public/docs` folder.
-
-
 ## Installation
 
-[Download the latest release](https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin/releases), unzip it, rename the folder to `fMouseInput`, move it inside `app/systems/supGame/plugins/florentpoujol/` then restart your server.
+Directly from the `Server Settings` tab in Superpowers' App.
 
-__Advanced:__
-
-Get it via `npm`:
-        
-    cd app/systems/game/plugins
-    npm install superpowers-game-fmouseinput-plugin
-
-The name of the vendors or plugins in the `app/systems/game/plugins/` folder don't matter.  
-So you can leave the plugin path as `node_modules/superpowres-game-fmouseinput-plugin`.
+Or manually :
+[Download the latest release](https://github.com/florentpoujol/superpowers-game-fmouseinput-plugin/releases), unzip it, rename the folder to `fMouseInput`, move it inside `resources/app/systems/game/plugins/florentpoujol/` then restart your server.
 
 
 ## Setup 
@@ -39,9 +25,9 @@ So you can leave the plugin path as `node_modules/superpowres-game-fmouseinput-p
 Then, tell the newly placed component which camera the actor should be visible from.
 - If you added the component in the scene editor, sets the camera's actor's name in the `Camera` field.
 
-![Add and setup the component via the scene editor](https://dl.dropboxusercontent.com/u/51314747/superpowers/fmouseinput_tutorial_add_component_in_scene.jpg)
+![Add and setup the component via the scene editor](fmouseinput_tutorial_add_component_in_scene.jpg)
 
-- If you added the component by script, pass the camera component, its actor or its name to the `camera` property.
+- If you added the component by script, pass the camera component or the camera actor name to the `setCameraComponent()` or `setCameraActorName()` methods.
 
 Example via script :
 
@@ -50,12 +36,10 @@ Example via script :
         // add the component
         new fMouseInput(this.actor);
         
-        // then set the camera
-        this.actor.fMouseInput.camera = "MyCamera";
+        // then set the camera component
+        this.actor.fMouseInput.setCameraComponent( Sup.getActor("MyCamera").camera );
         // or
-        this.actor.fMouseInput.camera = Sup.getActor("MyCamera");
-        // or
-        this.actor.fMouseInput.camera = Sup.getActor("MyCamera").camera;
+        this.actor.fMouseInput.setCameraActorName( "MyCamera" );     
       }
     }
 
@@ -75,16 +59,16 @@ Once you are sure the mouse is over the actor, you can check for mouse button pr
     }
 
 You can also listen to several events like `mouseEnter` or `leftClickReleased` for instance to make things even easier.  
-So all you have to do is setup a listener function with the component's `on(eventName, listenerFunction)` method :
+So all you have to do is setup a listener function via the the component'ss event emiter :
 
     class MouseInputBehavior extends Sup.Behavior {
       awake() {
 
-        this.actor.fMouseInput.on("mouseEnter", () => {
+        this.actor.fMouseInput.emitter.on("mouseEnter", () => {
           // do stuff when the mouse just entered the actor
         });
 
-        this.actor.fMouseInput.on("leftClickReleased", () => { this.onLeftClick(); });
+        this.actor.fMouseInput.emitter.on("leftClickReleased", () => { this.onLeftClick(); });
       }
 
       onLeftCLick() {
@@ -94,12 +78,6 @@ So all you have to do is setup a listener function with the component's `on(even
 
 
 ## Events
-
-You can access the component's event emitter via the `emitter` property.
-
-    this.actor.fMouseInput.on("mouseEnter", () => { ... });
-    // is the same as
-    this.actor.fMouseInput.emitter.on("mouseEnter", () => { ... });
 
 Here is the list of the default events that you can listen to:
 
@@ -111,7 +89,7 @@ Here is the list of the default events that you can listen to:
 - `rightClickPressed`, `rightClickDown`, `rightClickReleased` when the mouse is on the actor and the right mouse button was pressed/released during the previous tick or is currently down.
 - `wheelUp`, `wheelDown` when the mouse is on the actor and the wheel is turned up or down during this tick.
 
-If you have the need to, the name and behavior of the "click" and "wheel" events can be modified by altering the `fMouseInput.eventsData` static property.
+If you have the need to, the name and behavior of the "click" and "wheel" events can be modified by altering the `fMouseInput.behaviorByEvents` static property.
 
 
 ## Misc
@@ -125,7 +103,5 @@ The interactions happen even when :
 The interactions don't happen when :
 - the actor is hidden with `actor.setVisible(false)` (or by unchecking the actor's `Visible` checkbox in the scene editor).
 - the layer the actor is part of is deactivated.
-
-Yet the component's `camera` property accept a value of type `Sup.Camera`, `Sup.Actor` or `string`, it always return a `Sup.Camera` component.
 
 An `fMouseInput` component will be added automatically on the actor with the camera component.

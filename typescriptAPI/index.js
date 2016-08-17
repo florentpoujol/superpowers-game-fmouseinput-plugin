@@ -1,4 +1,3 @@
-
 var fs = require("fs");
 
 SupCore.system.registerPlugin("typescriptAPI", "fMouseInput", {

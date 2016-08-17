@@ -19,7 +19,8 @@
             },
             "depth": 0,
             "nearClippingPlane": 0.1,
-            "farClippingPlane": 1000
+            "farClippingPlane": 1000,
+            "formatVersion": 1
           },
           "id": "0"
         }
@@ -62,7 +63,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
@@ -112,7 +114,8 @@
             "overrideOpacity": false,
             "opacity": null,
             "materialType": "basic",
-            "shaderAssetId": null
+            "shaderAssetId": null,
+            "formatVersion": 1
           },
           "id": "1"
         },
