@@ -1,25 +1,25 @@
-/// <reference path="../index.d.ts" />
 "use strict";
+/// <reference path="../index.d.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
 * Handles the form to edit the fMouseInput component public parameters in the scene editor.
 */
-var FMouseInputEditor = (function () {
+class FMouseInputEditor {
     /**
     * called when an actor in the scene gain focus
     * editConfig is defined in app\system/supGame/plugins\sparklinlabs\scene\editors\scene.ts:createComponentElement()
     */
-    function FMouseInputEditor(tbody, config, projectClient, editConfig) {
-        var _this = this;
+    constructor(tbody, config, projectClient, editConfig) {
         this.editConfig = editConfig;
         this.projectClient = projectClient;
-        var textRow = SupClient.table.appendRow(tbody, "Camera");
-        var textField = SupClient.table.appendTextField(textRow.valueCell, config.cameraActorName);
+        let textRow = SupClient.table.appendRow(tbody, "Camera");
+        let textField = SupClient.table.appendTextField(textRow.valueCell, config.cameraActorName);
         this.cameraActorNameField = textField;
-        this.cameraActorNameField.addEventListener("change", function (event) {
-            _this.editConfig("setProperty", "cameraActorName", event.target.value.trim());
+        this.cameraActorNameField.addEventListener("change", (event) => {
+            this.editConfig("setProperty", "cameraActorName", event.target.value.trim());
         });
     }
-    FMouseInputEditor.prototype.config_setProperty = function (path, value) {
+    config_setProperty(path, value) {
         if (this.projectClient.entries == null)
             return;
         switch (path) {
@@ -27,16 +27,14 @@ var FMouseInputEditor = (function () {
                 this.cameraActorNameField.value = value;
                 break;
         }
-    };
+    }
     /* tslint:disable:no-empty */
     // empty methods necessary to prevent errors when in the scene editor
-    FMouseInputEditor.prototype.destroy = function () { };
-    FMouseInputEditor.prototype.onEntriesReceived = function (entries) { };
-    FMouseInputEditor.prototype.onEntryAdded = function (entry, parentId, index) { };
-    FMouseInputEditor.prototype.onEntryMoved = function (id, parentId, index) { };
-    FMouseInputEditor.prototype.onSetEntryProperty = function (id, key, value) { };
-    FMouseInputEditor.prototype.onEntryTrashed = function (id) { };
-    return FMouseInputEditor;
-}());
-Object.defineProperty(exports, "__esModule", { value: true });
+    destroy() { }
+    onEntriesReceived(entries) { }
+    onEntryAdded(entry, parentId, index) { }
+    onEntryMoved(id, parentId, index) { }
+    onSetEntryProperty(id, key, value) { }
+    onEntryTrashed(id) { }
+}
 exports.default = FMouseInputEditor;

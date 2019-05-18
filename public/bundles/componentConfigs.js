@@ -1,32 +1,25 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/// <reference path="../../../default/scene/ComponentConfig.d.ts" />
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var FMouseInputConfig = (function (_super) {
-    __extends(FMouseInputConfig, _super);
+/// <reference path="../../../default/scene/ComponentConfig.d.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
+class FMouseInputConfig extends SupCore.Data.Base.ComponentConfig {
     /**
     * Called when the serveur loads, the scene loads
     * pub is the loaded config, the call to super sets this.pub (and probably checks it agains schema)
     */
-    function FMouseInputConfig(pub) {
-        _super.call(this, pub, FMouseInputConfig.schema);
+    constructor(pub) {
+        super(pub, FMouseInputConfig.schema);
     }
-    FMouseInputConfig.create = function () {
-        var emptyConfig = {
+    static create() {
+        let emptyConfig = {
             cameraActorName: ""
         };
         return emptyConfig;
-    };
-    FMouseInputConfig.schema = {
-        cameraActorName: { type: "string?", min: 0, mutable: true },
-    };
-    return FMouseInputConfig;
-}(SupCore.Data.Base.ComponentConfig));
-Object.defineProperty(exports, "__esModule", { value: true });
+    }
+}
+FMouseInputConfig.schema = {
+    cameraActorName: { type: "string?", min: 0, mutable: true },
+};
 exports.default = FMouseInputConfig;
 
 },{}],2:[function(require,module,exports){

@@ -1,12 +1,8 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/// <reference path="../index.d.ts" />
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var FMouseInputUpdater = (function () {
+/// <reference path="../index.d.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
+class FMouseInputUpdater {
     /**
     * Called when the scene loads
     * initialize engine component from config
@@ -14,57 +10,53 @@ var FMouseInputUpdater = (function () {
     * @param component Of type FMouseInput
     * @param config Of type FMouseInputConfigPub
     */
-    function FMouseInputUpdater(projectClient, component, config) {
+    constructor(projectClient, component, config) {
         component.setCameraActorName(config.cameraActorName);
     }
-    FMouseInputUpdater.prototype.destroy = function () { return; };
-    return FMouseInputUpdater;
-}());
+    destroy() { return; }
+}
 exports.FMouseInputUpdater = FMouseInputUpdater;
-var FMouseInput = (function (_super) {
-    __extends(FMouseInput, _super);
+class FMouseInput extends SupEngine.ActorComponent {
     /**
     * Called when the scene loads
     * actor - the scene's actor
     */
-    function FMouseInput(actor) {
-        _super.call(this, actor, "fMouseInput");
+    constructor(actor) {
+        super(actor, "fMouseInput");
         /* tslint:enable:variable-name */
         this.cameraActorName = "";
         this.isLayerActive = true;
     }
-    FMouseInput.prototype.update = function () {
+    update() {
         if (this.outer != null && this.isLayerActive === true && this.actor.threeObject.visible === true)
             this.outer._update();
-    };
+    }
     // called by Superpowers when a layer is (de)actived
-    FMouseInput.prototype.setIsLayerActive = function (active) {
+    setIsLayerActive(active) {
         this.isLayerActive = active;
-    };
+    }
     // called by the API instance when it is destroyed
-    FMouseInput.prototype._destroy = function () {
+    _destroy() {
         this.isLayerActive = false;
         this.outer = null;
-        _super.prototype._destroy.call(this);
-    };
+        super._destroy();
+    }
     // called from the API component on creation
     // outer is the component's API instance, of type fMouseInput
-    FMouseInput.prototype.setOuter = function (outer) {
+    setOuter(outer) {
         if (this.cameraActorName !== "")
             outer.setCameraActorName(this.cameraActorName);
         this.outer = outer;
-    };
+    }
     // called from the Updater
-    FMouseInput.prototype.setCameraActorName = function (name) {
+    setCameraActorName(name) {
         this.cameraActorName = name;
         if (this.outer != null)
             this.outer.setCameraActorName(this.cameraActorName);
-    };
-    /* tslint:disable:variable-name */
-    FMouseInput.Updater = FMouseInputUpdater;
-    return FMouseInput;
-}(SupEngine.ActorComponent));
-Object.defineProperty(exports, "__esModule", { value: true });
+    }
+}
+/* tslint:disable:variable-name */
+FMouseInput.Updater = FMouseInputUpdater;
 exports.default = FMouseInput;
 
 },{}],2:[function(require,module,exports){

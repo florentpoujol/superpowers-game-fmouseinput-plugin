@@ -30,7 +30,7 @@ export default class FMouseInputEditor {
 
   config_setProperty(path: string, value: any): void {
     if (this.projectClient.entries == null) return;
-    switch(path) {
+    switch (path) {
       case "cameraActorName":
         this.cameraActorNameField.value = value;
         break;
